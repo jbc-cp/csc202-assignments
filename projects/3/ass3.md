@@ -178,8 +178,9 @@ computer platform. Different operating systems have different codes for
 files that appear identical in a regular text editor are actually not
 identical.   
 
-## Submission You must submit (commit and push) the
-following files:
+## Submission
+
+You must submit (commit and push) the following files:
 
 * huffman.py, containing the functions specified and any helper functions necessary
   * cnt_freq(filename): returns a Python list of 256 integers
