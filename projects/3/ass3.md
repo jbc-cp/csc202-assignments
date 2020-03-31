@@ -176,7 +176,9 @@ computer platform. Different operating systems have different codes for
 "newline". Windows uses ’\r\n’ = 0x0d 0x0a, while Unix and Mac use ’\n’
 = 0x0a. It is always useful to use a hex editor to verify why certain
 files that appear identical in a regular text editor are actually not
-identical.    5 Submission You must submit (commit and push) the
+identical.   
+
+## Submission You must submit (commit and push) the
 following files:
 
 * huffman.py, containing the functions specified and any helper functions necessary
