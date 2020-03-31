@@ -1,4 +1,4 @@
-#Assignment 3a: Huffman Encoding
+# Assignment 3a: Huffman Encoding
 
 ## Description
 
@@ -25,7 +25,8 @@ the frequency of occurrence of characters. A detailed example of how to
 construct such a Huffman tree is provided here: Huffman_Example.pdf
 
 Note: 
-* You must provide test cases for all functions (Only test the provided functions, with the exact name provided)  
+* You must provide test cases for all functions (Only test the provided
+  functions, with the exact name provided)
 * Use descriptive names for data structures and helper functions.
  
 ## Functions
@@ -58,7 +59,16 @@ building test cases for each function as it is implemented.
 
 A Huffman Tree is a binary tree of HuffmanNodes. 
 
-* A HuffmanNode class represents either a leaf or an internal node (including the root node) of a Huffman tree.  A HuffmanNode contains a character (stored as an ASCII value) an occurrence count for that character, as well as references to left and right Huffman subtrees, each of which is a binary tree of HuffmanNodes.  The character value and occurrence count of an internal node are assigned as described below.  You may add fields in your HuffmanNode definition if you feel it is necessary for your implementation.  Do not change the names of the fields specified in the huffman.py starter file given to you via GitHub.
+* A HuffmanNode class represents either a leaf or an internal node
+  (including the root node) of a Huffman tree.  A HuffmanNode contains a
+  character (stored as an ASCII value) an occurrence count for that
+  character, as well as references to left and right Huffman subtrees,
+  each of which is a binary tree of HuffmanNodes.  The character value
+  and occurrence count of an internal node are assigned as described
+  below.  You may add fields in your HuffmanNode definition if you feel
+  it is necessary for your implementation.  Do not change the names of
+  the fields specified in the huffman.py starter file given to you via
+  GitHub.
 
 ### Build a Huffman Tree
 
@@ -131,8 +141,11 @@ this we need an ordering on the Huffman nodes.
 
 2.5 Huffman Encoding
 
-* Write a function called huffman_encode(in_file, out_file) (use that exact name) that reads an input text file and writes to an output file the following:
-  * A header (see below for format) on the first line in the file (should end with a newline)
+* Write a function called huffman_encode(in_file, out_file) (use that
+  exact name) that reads an input text file and writes to an output file
+  the following:
+  * A header (see below for format) on the first line in the file
+    (should end with a newline)
   * Using the Huffman code, the encoded text into an output file. 
 * Write a function called create_header(list_of_freqs) that takes as
   parameter the list of freqs previously determined from
@@ -150,18 +163,34 @@ this we need an ordering on the Huffman nodes.
   explanation is simple: although we encoded our input text characters
   in sequences of ’0’s and ’1’s, representing actual single bits, we
   write them as individual ’0’ and ’1’ characters, i.e. 8 bits.
-* To actually obtain a compressed the file you will also write the ’0’ and ’1’ characters as individual bits.  Do this by taking the out_file string and:
-  * Add _compressed to the name of the file before the .txt file.  (Ex: if out_file is named “output.txt”, you will create the string “output_compressed.txt”)
-  * Use the filename created above to create a HuffmanBitWriter object using the huffman_bit_writer module.
-  * Use the methods in the HuffmanBitWriter object to write the header and individual bits of the character codes to the compressed file.
+* To actually obtain a compressed the file you will also write the ’0’
+  and ’1’ characters as individual bits.  Do this by taking the out_file
+  string and:
+  * Add _compressed to the name of the file before the .txt file.  (Ex:
+    if out_file is named “output.txt”, you will create the string
+    “output_compressed.txt”)
+  * Use the filename created above to create a HuffmanBitWriter object
+    using the huffman_bit_writer module.
+  * Use the methods in the HuffmanBitWriter object to write the header
+    and individual bits of the character codes to the compressed file.
  
 ## Tests
 
-* Write sufficient tests using unittest to ensure full functionality and correctness of your program. Start by using the supplied huffman_tests.py, and the various text files (e.g. file1.txt and file1_soln.txt) to begin testing your programs. You may want to initially comment out some of the tests, or ignore failures when testing functionality that hasn’t been fully implemented.
+* Write sufficient tests using unittest to ensure full functionality and
+  correctness of your program. Start by using the supplied
+  huffman_tests.py, and the various text files (e.g. file1.txt and
+  file1_soln.txt) to begin testing your programs. You may want to
+  initially comment out some of the tests, or ignore failures when
+  testing functionality that hasn’t been fully implemented.
 * When testing, always consider edge conditions like the following cases:
-  * If the input file consists only of some number of a single character, say "aaaaa", it should write just that character followed by a space followed by the number of occurrences with a newline: “97 5\n” 
-  * In case of an empty input text file, your program should also produce an empty file. 
-  * If an input file does not exist, your program should raise a FileNotFoundError.
+  * If the input file consists only of some number of a single
+    character, say "aaaaa", it should write just that character followed
+    by a space followed by the number of occurrences with a newline: “97
+    5\n”
+  * In case of an empty input text file, your program should also
+    produce an empty file.
+  * If an input file does not exist, your program should raise a
+    FileNotFoundError.
 
 ## Some Notes
 
@@ -182,7 +211,8 @@ identical.   
 
 You must submit (commit and push) the following files:
 
-* huffman.py, containing the functions specified and any helper functions necessary
+* huffman.py, containing the functions specified and any helper
+  functions necessary
   * cnt_freq(filename): returns a Python list of 256 integers
     representing the frequencies of characters in file (indexed by ASCII
     value of characters)
@@ -194,7 +224,8 @@ You must submit (commit and push) the following files:
     ASCII characters that do not appear in the file being compressed.
   * create_header(list_of_freqs): returns a header for the output file
     with ascii values and their associated counts, space separated.
-  * huffman_encode(in_file, out_file): encodes in_file and writes the it to out_file
+  * huffman_encode(in_file, out_file): encodes in_file and writes the it
+    to out_file
 
 * huffman_tests.py, containing testcases for the functions specified by
   the assignment
@@ -211,7 +242,8 @@ You must submit (commit and push) the following files:
     will be used to verify that you have 100% coverage of your
     solution. Your solution must pass these tests.
 
-* ordered_list.py, your correct implementation of the OrderedList class from Lab 4.
+* ordered_list.py, your correct implementation of the OrderedList class
+  from Lab 4.
 
 * huffman_bit_writer.py, unmodified, as provided to you.
 
