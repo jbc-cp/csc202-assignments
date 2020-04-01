@@ -77,6 +77,7 @@ just follow these steps:
 
 For example, given the expression 5 1 2 + 4 ^ + 3 - :
 
+* tab damage here! *
 ```
 Input	Type	Stack	Notes
 5	Value	5	Push 5 onto stack
@@ -94,22 +95,30 @@ Input	Type	Stack	Notes
  
 ### Converting Infix Expressions to Postfix (RPN)
 
-You can also use a stack to convert an infix expression to an RPN expression via the Shunting-yard algorithm. The steps are shown below. Note that the algorithm is more complex that what was shown in class, because the project will include a power operator.
+You can also use a stack to convert an infix expression to an RPN
+expression via the Shunting-yard algorithm. The steps are shown
+below. Note that the algorithm is more complex that what was shown in
+class, because the project will include a power operator.
+
 * Process the expression from left-to-right
 * When you encounter a value:
   * Append the value to the RPN expression
 * When you encounter an opening parenthesis:
   * Push it onto the stack
 * When you encounter a closing parenthesis:
-  * Until the top of stack is an opening parenthesis, pop operators off the stack and append them to the RPN expression
-  * Pop the opening parenthesis from the stack (but don't put it into the RPN expression)
+  * Until the top of stack is an opening parenthesis, pop operators off
+    the stack and append them to the RPN expression
+  * Pop the opening parenthesis from the stack (but don't put it into
+    the RPN expression)
 * When you encounter an operator, o1:
   * While there is an operator, o2, at the top of the stack and either
-    * o1 is left-associative and its precedence is less than or equal to that of o2, or
+    * o1 is left-associative and its precedence is less than or equal to
+      that of o2, or
     * o1 is right-associative, and has precedence less than that of o2
 * Pop o2 from the stack and append it to the RPN expression
   * Finally, push o1 onto the stack
-* When you get to the end of the infix expression, pop (and append to the RPN expression) all remaining operators
+* When you get to the end of the infix expression, pop (and append to
+  the RPN expression) all remaining operators
 
 For example, given the expression 3 + 4 * 2 / ( 1 - 5 ) ^ 2 ^ 3:
 
@@ -157,33 +166,57 @@ end	Pop entire stack to output	3 4 2 * 1 5 - 2 3 ^ ^ / +
 
 For example, given the Prefix expression: * - 3 / 2 1 - / 4 5 6
 
+
+*text below still tab damaged!*
+
 ```
-Input      Action	Stack	Notes
-6	Push ‘6’ onto stack	‘6’	Read from right to lefth ‘         ’ onto stack	‘5’ ‘6’	
-4	Push ‘4’ onto stack	‘4’         ‘5’         ‘6’	
-/	Pop ‘4’, ‘5’, combine with /, push onto stack  ‘4 5 /’ ‘6’	Keep tokens space separated
--	Pop ‘4 5 /’, ‘6’, combine with -, push onto stack	‘4 5 / 6 -’	
-1	Push 1 onto stack	‘1’ ‘4 5 / 6 -’	
-2	Push 2 onto stack	‘2’ ‘1’ ‘4 5 / 6 -’	
-/	Pop ‘2’,’1’, combine with /, push onto stack	‘2 1 /’ ‘4 5 / 6 -’	
-3	Push 3 onto stack	‘3’ ‘2 1 /’ ‘4 5 / 6 -’	
--	Pop ‘3’,‘2 1 /’, combine with -, push onto stack 	‘3 2 1 / -’ ‘4 5 / 6 -’	
-*	Pop ‘3 2 1 / -’,‘4 5 / 6 -’, combine with *, push onto stack	‘3 2 1 / - 4 5 / 6 - *’	
-end	Pop entire stack to output		Result: ‘3 2 1 / - 4 5 / 6 - *’
+Input  Action                    Stack          Notes
+6      Push ‘6’ onto stack	  ‘6’           Read from right to left
+5      Push '5' onto stack        '5' '6' 
+4      Push ‘4’ onto stack        ‘4’ ‘5’ ‘6’
+/      Pop ‘4’, ‘5’, combine      ‘4 5 /’ ‘6’	Keep tokens space separated
+       with /, push onto stack
+-      Pop ‘4 5 /’, ‘6’, combine  ‘4 5 / 6 -’
+       with -, push onto stack
+1      Push 1 onto stack          ‘1’ ‘4 5 / 6 -’
+2      Push 2 onto stack          ‘2’ ‘1’ ‘4 5 / 6 -’	
+/      Pop ‘2’,’1’, combine with /, push onto stack	‘2 1 /’ ‘4 5 / 6 -’	
+3      Push 3 onto stack	‘3’ ‘2 1 /’ ‘4 5 / 6 -’	
+-      Pop ‘3’,‘2 1 /’, combine with -, push onto stack  ‘3 2 1 / -’ ‘4 5 / 6 -’	
+*      Pop ‘3 2 1 / -’,‘4 5 / 6 -’, combine with *, push onto stack	‘3 2 1 / - 4 5 / 6 - *’	
+end    Pop entire stack to output		Result: ‘3 2 1 / - 4 5 / 6 - *’
 ```
 
 ## Tests
 
-* Write sufficient tests using unittest to ensure full functionality and correctness of your program. 
-* Make sure that your tests test each branch of your program and any edge conditions.  You do not need to test for correct input in the assignment, other than what is specified above.  
-* postfix_eval(input_str) should raise a ValueError if a divisor is 0.  postfix_eval(input_str) should raise a PostfixFormatException if the input is not well-formed.  Specifically, it should raise this exception with the following messages in the following conditions:
-  * “Invalid token” if one of the tokens is neither a valid operand nor a valid operator.
-  * “Insufficient operands” if the expression does not contain sufficient operands.
+* Write sufficient tests using unittest to ensure full functionality and
+  correctness of your program.
+* Make sure that your tests test each branch of your program and any
+  edge conditions.  You do not need to test for correct input in the
+  assignment, other than what is specified above.
+* postfix_eval(input_str) should raise a ValueError if a divisor is 0.
+  postfix_eval(input_str) should raise a PostfixFormatException if the
+  input is not well-formed.  Specifically, it should raise this
+  exception with the following messages in the following conditions:
+  * “Invalid token” if one of the tokens is neither a valid operand nor
+    a valid operator.
+  * “Insufficient operands” if the expression does not contain
+    sufficient operands.
   * “Too many operands” if the expression contains too many operands.
-  * Note: to raise an exception with a message: raise PostfixFormatException(“Here is a message”)
-* You may assume that when infix_to_postfix(input_str) is called that input_str is a well formatted, correct infix expression containing only numbers, the specified operators, parentheses () and that the tokens are space separated.  You may use the Python functions split and join.
-* You may assume that when prefix_to_postfix(inpu```t_str) is called that input_str is a well formatted, correct prefix expression containing only numbers, the specified operators, and that the tokens are space separated.  You may use the Python functions split and join.
-* You can assume that the user will use postfix_valid(input_str) prior to calling the postfix evaluation function, so postfix_eval(input_str) will always be called with a valid postfix expression
+  * Note: to raise an exception with a message: raise
+    PostfixFormatException(“Here is a message”)
+* You may assume that when infix_to_postfix(input_str) is called that
+  input_str is a well formatted, correct infix expression containing
+  only numbers, the specified operators, parentheses () and that the
+  tokens are space separated.  You may use the Python functions split
+  and join.
+* You may assume that when prefix_to_postfix(inpu```t_str) is called
+  that input_str is a well formatted, correct prefix expression
+  containing only numbers, the specified operators, and that the tokens
+  are space separated.  You may use the Python functions split and join.
+* You can assume that the user will use postfix_valid(input_str) prior
+  to calling the postfix evaluation function, so postfix_eval(input_str)
+  will always be called with a valid postfix expression
 * postfix_eval(input_str) should raise a ValueError if a divisor is 0. 
 
 ## Submission
