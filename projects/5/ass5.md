@@ -9,8 +9,7 @@ path between them. It is a list of the sub-graphs within the larger
 graph.
 
 
-For the following graph to the right, we have two sub-graphs within the
-larger graph.
+For the following graph, we have two sub-graphs within the larger graph.
 
 [a bipartite graph](./graph.png)
 
