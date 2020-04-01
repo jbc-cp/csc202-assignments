@@ -114,7 +114,7 @@ The hash function should take a string containing one or more characters
 and return an integer.  Use Horner’s rule to compute the hash
 efficiently:
 
-h(str) = ∑_(i=0)^(n-1)▒〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n = the minimum of len(str) and 8  
+h(str) = ∑_(i=0)^(n-1)〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n = the minimum of len(str) and 8  
 
 Also, your hash table size should have the capability to grow if the
 input file is large.  After insertion of an item, if the load factor
@@ -122,7 +122,7 @@ exceeds 0.5, you should grow the hash table size.
 
 Start with a default hash table size of 191, then if increases are necessary, use: 
 
-“new table size” = 2 *“old table size” + 1 (use this “new table size” even if it is no longer a prime)
+“new table size” = 2 * “old table size” + 1 (use this “new table size” even if it is no longer a prime)
 
 ### Removing Punctuation
 
