@@ -29,9 +29,9 @@ Notes:
   exponential operator will be denoted by ^.  For example, 2^3=8 and
   3^2=9.  (https://en.wikipedia.org/wiki/Exponentiation)
 * For infix expressions, the exponentiation operator has higher
-  precedence than the * or /.  For example, 2*3^2 = 2*9 = 18 not 6^2=36
+  precedence than the * or /.  For example, 2\*3^2 = 2*9 = 18 not 6^2=36
 * Also, for infix expressions, the exponentiation operator associates
-  from right to left.  The other operators (+,-,*,/) associate left to
+  from right to left.  The other operators (+,-,*, /) associate left to
   right. Think carefully about what this means.  For example: 2^3^2 =
   2^(3^2) = 2^9 = 512 not (2^3)^2= 8^2=64
 * Infix expressions may also have parentheses - consider that for the
@@ -82,12 +82,12 @@ Input Type      Stack   Notes
 5     Value     5       Push 5 onto stack
 1     Value     1 5     Push 1 onto stack
 2     Value     2 1 5   Push 2 onto stack
-+     Operator  3 5     Pop two operands (1, 2), perform operation (1+2=31+2=3), and push result onto stack
++     Operator  3 5     Pop two operands (1, 2), perform operation (1+2=3), and push result onto stack
 4     Value     4 3 5   Push 4 onto stack
-^     Operator  81 5    Pop two operands (3, 4), perform operation (34=8134=81), and push result onto stack
-+     Operator  86      Pop two operands (5, 81), perform operation (5+81=865+81=86), and push result onto stack
+^     Operator  81 5    Pop two operands (3, 4), perform operation (3^4=81), and push result onto stack
++     Operator  86      Pop two operands (5, 81), perform operation (5+81=86), and push result onto stack
 3     Value     3 86    Push 3 onto stack
-−     Operator  83      Pop two operands (86, 3), perform operator (86−3=1486−3=14), and push result onto stack
+−     Operator  83      Pop two operands (86, 3), perform operator (86−3=83), and push result onto stack
       Result    83
 ```
 
