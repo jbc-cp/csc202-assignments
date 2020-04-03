@@ -67,7 +67,7 @@ PyCharm IDE: [https://www.jetbrains.com/pycharm/](https://www.jetbrains.com/pych
 
 ### Videos on specific topics.
 
-Installing Python on Mac/Windows : [https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;list=PL-](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)[osiE80TeTt2d9bfVyTiXJA-UTHn6WwU](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
+**Installing Python on Mac/Windows** : [https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;list=PL-](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)[osiE80TeTt2d9bfVyTiXJA-UTHn6WwU](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
 
 **Strings** : [https://www.youtube.com/watch?v=k9TUPpGqYTo&amp;list=PL-osiE80TeTt2d9bfVyTiXJA-](https://www.youtube.com/watch?v=k9TUPpGqYTo&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&amp;amp;index=2)[UTHn6WwU&amp;index=2](https://www.youtube.com/watch?v=k9TUPpGqYTo&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&amp;amp;index=2)
 
@@ -79,15 +79,21 @@ Installing Python on Mac/Windows : [https://www.youtube.com/watch?v=YYXdXT2l-Gg&
 
 **Modules:** [https://www.youtube.com/watch?v=CqvZ3vGoGs0&amp;list=PL-osiE80TeTt2d9bfVyTiXJA-](https://www.youtube.com/watch?v=CqvZ3vGoGs0&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&amp;amp;index=9)[UTHn6WwU&amp;index=9](https://www.youtube.com/watch?v=CqvZ3vGoGs0&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&amp;amp;index=9)
 
-# **For folks new to Cal Poly: Unix Environment**
+## For folks new to Cal Poly: Unix Environment
 
-### **Unix**
+### Unix
 
-The lab machines run a distribution of the Linux operating system. For simplicity, and to gain experience in a, potentially, new environment, we will do our coursework in this environment.
+The lab machines run a distribution of the Linux operating system. For
+simplicity, and to gain experience in a, potentially, new environment,
+we will do our coursework in this environment.
 
 Open a terminal window. To do so, from the system menu on the desktop toolbar,
 
-select **Applications** → **System Tools** → **Terminal**. The Terminal program will present a window with a command-line prompt. At this prompt you can type Linux commands to list files, move files, create directories, etc. For this lab you will use only a few commands. Additional commands can be found at:
+select **Applications** → **System Tools** → **Terminal**. The Terminal
+program will present a window with a command-line prompt. At this prompt
+you can type Linux commands to list files, move files, create
+directories, etc. For this lab you will use only a few
+commands. Additional commands can be found at:
 
 - Unix Tutorial
   -
@@ -98,44 +104,69 @@ select **Applications** → **System Tools** → **Terminal**. The Terminal prog
     - [emacs](http://xahlee.org/emacs/emacs.html)[tutorial](http://xahlee.org/emacs/emacs.html)
     - [vi](http://www.unix-manuals.com/tutorials/vi/vi-in-10-1.html)[tutorial](http://www.unix-manuals.com/tutorials/vi/vi-in-10-1.html)
 
-In the terminal, type **ls** at the prompt and hit \&lt;Enter\&gt;. This command will list the files in the current directory. (also know as a folder.) If you type **pwd** , the current directory will be printed (it is often helpful to
+In the terminal, type `ls` at the prompt and hit \&lt;Enter\&gt;. This
+command will list the files in the current directory. (also know as a
+folder.) If you type `pwd` , the current directory will be printed (it
+is often helpful to type `pwd` while you are navigating directories). If
+you type `tree` , then you will see a tree-like listing of the
+directory structure rooted at the current directory.
 
-type **pwd** while you are navigating directories). If you type **tree** , then you will see a tree-like listing of the directory structure rooted at the current directory.
+Create a new directory for your coursework by typing `mkdir cpe202`.
+Use `ls` again to see that the new directory has been created.
 
-Create a new directory for your coursework by typing **mkdir cpe202**. Use **ls** again to see that the new directory has been created.
+Change into this new directory with `cd` by typing `cd cpe202` . To move
+back &quot;up&quot; one directory, type `cd ..`. To summarize
 
-Change into this new directory with **cd** by typing **cd cpe202**. To move back &quot;up&quot; one directory, type **cd ..**. To summarize
-
-- **ls** list files in the currentdirectory
-- **cd** change to anotherdirectory
-- **mkdir** create a newdirectory
-- **pwd** print (the path of) the currentdirectory
+- `ls` list files in the currentdirectory
+- `cd` change to anotherdirectory
+- `mkdir` create a newdirectory
+- `pwd` print (the path of) the currentdirectory
 
 Though these basic commands are enough for now, consider working through a Unix tutorial.
 
-### **Editing**
+### Editing
 
-There are many options for editing a Python program. On the department machines, you will find vi, emacs/xemacs, nano, gedit, sublime, and others. The editor that one uses is often a matter of taste. You are not required to use a specific editor, but we will offer some advice (and we will try to help with whichever one you choose). There is lots more information here: [http://users.csc.calpoly.edu/~akeen/courses/csc101/handouts/labs/lab1.html](http://users.csc.calpoly.edu/%7Eakeen/courses/csc101/handouts/labs/lab1.html)
+There are many options for editing a Python program. On the department
+machines, you will find emacs, vi, nano, gedit, sublime, and
+others. The editor that one uses is often a matter of taste. You are not
+required to use a specific editor, but we will offer some advice (and we
+will try to help with whichever one you choose). There is lots more
+information here:
+
+[http://users.csc.calpoly.edu/~akeen/courses/csc101/handouts/labs/lab1.html](http://users.csc.calpoly.edu/%7Eakeen/courses/csc101/handouts/labs/lab1.html)
 
 ### **Interactive Interpreter**
 
-The Python interpreter can be used in an interactive mode. In this mode, you will be able to type a statement and immediately see the result of its execution. Interactive mode is very useful for experimenting with the language and for testing small pieces of code, but your general development process with be editing and executing a file as discussed previously.
+The Python interpreter can be used in an interactive mode. In this mode,
+you will be able to type a statement and immediately see the result of
+its execution. Interactive mode is very useful for experimenting with
+the language and for testing small pieces of code, but your general
+development process with be editing and executing a file as discussed
+previously.
 
-Start the interpreter in interactive mode by typing **python** at the command prompt. You should now see something like the following.
+Start the interpreter in interactive mode by typing `python` at the
+command prompt. You should now see something like the following.
 
+```
 Python 3.6.0 (v3.6.0:41df79263a11, Dec 23 2016, 07:18:10) [MSC v.1900 32 bit (Intel)] on win32
 
-Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
 
-\&gt;\&gt;\&gt;
+Type "help", "copyright", "credits" or "license" for more information.
 
-The \&gt;\&gt;\&gt; is the interpreter&#39;s prompt. You can type an expression at the prompt to see what it evaluates to. Type each of the following (hit enter after each one) to see the result. When you are finished, you can exit the interpreter by typing ctrl-D (i.e., hold the control key and hit d).
+>>>
+```
 
-- 0 +1
-- 2 \* 2
-- 19 // 3
-- 19 / 3
-- 19 / 3.0
-- 0 // 3.0
-- 4 \* 2 + 27 // 3 +4
-- 4 \* (2 + 27) // 3 +4
+The `>>>` is the interpreter&#39;s prompt. You can type an expression at
+the prompt to see what it evaluates to. Type each of the following (hit
+enter after each one) to see the result. When you are finished, you can
+exit the interpreter by typing ctrl-D (i.e., hold the control key and
+hit d).
+
+- `0 +1`
+- `2 \* 2`
+- `19 // 3`
+- `19 / 3`
+- `19 / 3.0`
+- `0 // 3.0`
+- `4 \* 2 + 27 // 3 +4`
+- `4 \* (2 + 27) // 3 +4`
