@@ -31,7 +31,7 @@ On Jupiter you would weigh 318.24 pounds.
 - Your program may use a &quot;cast&quot; only one time. Ask me if you
   don&#39;t know what this means.
 - Your program may only use the print function once.
-- Run the unit tests in planets\_tests.py to check your solution!
+- Run the unit tests in planets_tests.py to check your solution!
 
 **Submission/Grading**
 
