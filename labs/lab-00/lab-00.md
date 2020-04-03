@@ -1,12 +1,19 @@
 # Lab 0: Environment, Python, and GitHub!
 
-## **Part 0**
+## Part 0
 
-If you do not already have a GitHub account, go to www.github.com to create one.  I recommend using your Cal Poly user name, but you may use another user name.  Check out (clone) the code in the lab0 repository.  See the essential Github commands and link to a GitHub tutorial on the PolyLearn page.
+If you do not already have a GitHub account, go to www.github.com to
+create one.  I recommend using your Cal Poly user name, but you may use
+another user name.  Check out (clone) the code in the lab0 repository.
+See the essential Github commands and link to a GitHub tutorial on the
+PolyLearn page.
 
-Once you have created a GitHub account, you must tell us both your GitHub account name and your Cal Poly user name by filling out the following form:[https://docs.google.com/forms/d/e/1FAIpQLSdFd2iazIy04ZRUi2e2Uk5E1hfsfh4cJpy6kTqTUqTNUttN5Q/viewform](https://docs.google.com/forms/d/e/1FAIpQLSdFd2iazIy04ZRUi2e2Uk5E1hfsfh4cJpy6kTqTUqTNUttN5Q/viewform)
+Once you have created a GitHub account, you must tell us both your
+GitHub account name and your Cal Poly user name by filling out the
+following
+form:[https://docs.google.com/forms/d/e/1FAIpQLSdFd2iazIy04ZRUi2e2Uk5E1hfsfh4cJpy6kTqTUqTNUttN5Q/viewform](https://docs.google.com/forms/d/e/1FAIpQLSdFd2iazIy04ZRUi2e2Uk5E1hfsfh4cJpy6kTqTUqTNUttN5Q/viewform)
 
-## **Part 1**
+## Part 1
 
 In the plantets.py file, add code to implement the functionality shown by the following sample run:
 
@@ -21,9 +28,9 @@ On Jupiter you would weigh 318.24 pounds.
 
 #### Important Information and Requirements:
 
-- To calculate a person&#39;s weight on Mars, multiple their weight on
+- To calculate a person&#39;s weight on Mars, multiply their weight on
   earth by 0.38.
-- To calculate a person&#39;s weight on Jupiter, multiple their weight
+- To calculate a person&#39;s weight on Jupiter, multiply their weight
   on earth by 2.34.
 - Your output must match my sample output exactly. Make sure there is a
   blank line in between prompting for the user&#39;s weight and
@@ -33,29 +40,34 @@ On Jupiter you would weigh 318.24 pounds.
 - Your program may only use the print function once.
 - Run the unit tests in planets_tests.py to check your solution!
 
-**Submission/Grading**
+### Submission/Grading
 
-Make sure that the code that you want to be graded has been committed **and pushed** to GitHub.  Failure to do so will result in receiving no credit for the lab.  Not sure if you code has been pushed to GitHub?  Use a web browser, go to you GitHub account and check!  Once your assignment has been graded, feedback will be automatically emailed to you.
+Make sure that the code that you want to be graded has been committed
+*and pushed* to GitHub.  Failure to do so will result in receiving no
+credit for the lab.  Not sure if you code has been pushed to GitHub?
+Use a web browser, go to you GitHub account and check!  Once your
+assignment has been graded, feedback will be automatically emailed to
+you.
 
+## For folks new to Python or who need review
 
-
-# **For folks new to Python or who need review**
-
-### **The basic Python Tutorial**
+### The basic Python Tutorial
 
 [https://docs.python.org/3/tutorial/](https://docs.python.org/3/tutorial/)
 
-### **This site gives the essentials for those familiar with Java.**
+### This site gives the essentials for those familiar with Java.
 
 Python for Java Programmers: [http://python4java.necaiseweb.org/Fundamentals/Fundamentals](http://python4java.necaiseweb.org/Fundamentals/Fundamentals)
 
-### **If you want to use an IDE, you are welcome to. If you do not already have an IDE that you are familiar with, PyCharm is a good choice for Python development.**
+### IDE
+
+If you want to use an IDE, you are welcome to. If you do not already have an IDE that you are familiar with, PyCharm is a good choice for Python development.
 
 PyCharm IDE: [https://www.jetbrains.com/pycharm/](https://www.jetbrains.com/pycharm/)
 
-### **Videos on specific topics.**
+### Videos on specific topics.
 
-**Installing Python on Mac/Windows** : [https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;list=PL-](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)[osiE80TeTt2d9bfVyTiXJA-UTHn6WwU](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
+Installing Python on Mac/Windows : [https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;list=PL-](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)[osiE80TeTt2d9bfVyTiXJA-UTHn6WwU](https://www.youtube.com/watch?v=YYXdXT2l-Gg&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU)
 
 **Strings** : [https://www.youtube.com/watch?v=k9TUPpGqYTo&amp;list=PL-osiE80TeTt2d9bfVyTiXJA-](https://www.youtube.com/watch?v=k9TUPpGqYTo&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&amp;amp;index=2)[UTHn6WwU&amp;index=2](https://www.youtube.com/watch?v=k9TUPpGqYTo&amp;amp;list=PL-osiE80TeTt2d9bfVyTiXJA-UTHn6WwU&amp;amp;index=2)
 
