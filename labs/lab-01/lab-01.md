@@ -26,7 +26,7 @@ Location 1: <__main__.Location object at 0x000001F6A2E0C7B8>
 
 1. In the lab1.py file, complete the iterative function to find the maximum integer in a list of integers. 
 
-```
+```python
 def max_list_iter(int_list):  # must use iteration not recursion
    """finds the max of a list of numbers and returns the value (not the index)
    If int_list is empty, returns None. If list is None, raises ValueError"""
@@ -34,7 +34,7 @@ def max_list_iter(int_list):  # must use iteration not recursion
 
 1. In the lab1.py file, complete the recursive function to reverse a list of integers:
 
-```
+```python
 def reverse_rec(int_list):   # must use recursion
    """recursively reverses a list of numbers and returns the reversed list
    If list is None, raises ValueError"""
@@ -42,7 +42,7 @@ def reverse_rec(int_list):   # must use recursion
 
 1. In the lab1.py file, complete the recursive function to search a list of integers using binary search along with test cases. If the target of the search is in the list, the function returns its index. 
 
-```
+```python
 def bin_search(target, low, high, int_list):  # must use recursion
    """searches for target in int_list[low..high] and returns index if found
    If target is not found returns None. If list is None, raises ValueError """
@@ -188,7 +188,7 @@ previously.
 Start the interpreter in interactive mode by typing `python` at the
 command prompt. You should now see something like the following.
 
-```
+```python
 Python 3.6.0 (v3.6.0:41df79263a11, Dec 23 2016, 07:18:10) [MSC v.1900 32 bit (Intel)] on win32
 
 
