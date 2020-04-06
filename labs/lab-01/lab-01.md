@@ -3,7 +3,7 @@
 ## Part 0
 
 
-1.	Review the code in location.py. Note that there is a class definition for a Location class, and an associated __init__ method. In addition, there is code to create Location objects and print information associated with those objects.
+Review the code in location.py. Note that there is a class definition for a Location class, and an associated __init__ method. In addition, there is code to create Location objects and print information associated with those objects.
 ```python
 class Location:
     def __init__(self, name, lat, long):
