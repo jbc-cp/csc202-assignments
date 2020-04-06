@@ -4,7 +4,6 @@
 
 
 1.	Review the code in location.py. Note that there is a class definition for a Location class, and an associated __init__ method. In addition, there is code to create Location objects and print information associated with those objects.
-
 ```python
 class Location:
     def __init__(self, name, lat, long):
@@ -12,7 +11,6 @@ class Location:
         self.lat = lat      # latitude in degrees (-90 to 90)
         self.long = long    # longitude in degrees (-180 to 180)
 ```
-
 1. Without modifying the code, run location.py in whatever environment you wish (again, reference the Getting Started document if you need help in doing this)
 1. Note the information that is printed out for each Location object – you should see something like this:
 Location 1: <__main__.Location object at 0x000001F6A2E0C7B8>
