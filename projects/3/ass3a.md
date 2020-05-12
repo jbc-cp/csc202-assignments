@@ -3,7 +3,8 @@
 ## Description
 
 For this project, you will implement a program to encode text using
-Huffman coding.  Huffman coding is a method of lossless (the original
+[Huffman coding](https://en.wikipedia.org/wiki/Huffman_coding).
+Huffman coding is a method of lossless (the original
 can be reconstructed perfectly) data compression. Each character is
 assigned a variable length code consisting of ’0’s and ’1’s. The length
 of the code is based on how frequently the character occurs; more
@@ -22,13 +23,18 @@ infrequent characters.
 
 The key problem is therefore to construct such a binary tree based on
 the frequency of occurrence of characters. A detailed example of how to
-construct such a Huffman tree is provided here: Huffman_Example.pdf
+construct such a Huffman tree is provided here: [Huffman_Example.pdf](./Huffman_Example.pdf)
 
 Note: 
 * You must provide test cases for all functions (Only test the provided
   functions, with the exact name provided)
 * Use descriptive names for data structures and helper functions.
- 
+
+## Source Files
+
+Start with the source files provided to you as part of GitHub Classroom,
+or the ones in the [src directory](./src/) of this repository.
+
 ## Functions
 
 The following bullet points provide a guide to implement some of the
