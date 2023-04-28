@@ -1,4 +1,4 @@
-# Assignment 3a: Huffman Encoding
+# Assignment 3: Huffman Encoding
 
 ## Description
 
