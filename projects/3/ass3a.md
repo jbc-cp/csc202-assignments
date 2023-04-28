@@ -26,14 +26,14 @@ the frequency of occurrence of characters. A detailed example of how to
 construct such a Huffman tree is provided here: [Huffman_Example.pdf](./Huffman_Example.pdf)
 
 Note: 
-* You must provide test cases for all functions (Only test the provided
-  functions, with the exact name provided)
+* You must provide test cases for all functions.
+* Use the given names for specified functions, exactly as they appear
+  in the assignment.
 * Use descriptive names for data structures and helper functions.
 
 ## Source Files
 
-Start with the source files provided to you as part of GitHub Classroom,
-or the ones in the [src directory](./src/) of this repository.
+Start with the source files provided to you as part of GitHub Classroom.
 
 ## Functions
 
