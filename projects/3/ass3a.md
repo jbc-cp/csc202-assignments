@@ -43,17 +43,18 @@ creating a file huffman.py and add functions and data definitions to
 this file, if not otherwise stated.  You should develop incrementally,
 building test cases for each function as it is implemented.
 
-### Count Occurrences: cnt_freq(filename)
+### Count Occurrences: cnt_freq(str)
 
-* Implement a function called cnt_freq(filename) that opens a text file
-  with a given file name (passed as a string) and counts the frequency
-  of occurrences of all the characters within that file. Use the
-  built-in Python List data structure of size 256 for counting the
+* Implement a function called cnt_freq(str) that accepts a string
+  and returns a numpy array that indicates the number of occurrences
+  of each character in the string. Use a
+  numpy array data structure of size 256 for counting the
   occurrences of characters.  This will provide efficient access to a
-  given position in the list.  (In non-Python terminology you want an
-  array.)  You can assume that in the input text file there are only
-  8-bit characters resulting in a total of 256 possible character
-  values.  This function should return the 256 item list with the counts
+  given position in the list. You can use the Python `ord` function
+  to map characters (or, more precisely, strings of length one) to
+  numeric values. You should discard all values larger than 255.
+  (These numbers will then be ASCII codes.)
+  This function should return the 256 item list with the counts
   of occurrences.  There can be issues with extra characters in some
   systems.
   * Suppose the file to be encoded contained:	ddddddddddddddddccccccccbbbbaaff
@@ -63,18 +64,11 @@ building test cases for each function as it is implemented.
 
 ### Data Definition for Huffman Tree
 
-A Huffman Tree is a binary tree of HuffmanNodes. 
+A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. 
 
-* A HuffmanNode class represents either a leaf or an internal node
-  (including the root node) of a Huffman tree.  A HuffmanNode contains a
-  character (stored as an ASCII value) an occurrence count for that
-  character, as well as references to left and right Huffman subtrees,
-  each of which is a binary tree of HuffmanNodes.  The character value
-  and occurrence count of an internal node are assigned as described
-  below.  You may add fields in your HuffmanNode definition if you feel
-  it is necessary for your implementation.  Do not change the names of
-  the fields specified in the huffman.py starter file given to you via
-  GitHub.
+* An HNode contains an occurrence count for that tree, and a
+  left and a right HTree.  An HLeaf contains only a character and an
+  occurrence count.
 
 ### Build a Huffman Tree
 
@@ -83,173 +77,114 @@ in the path from the root to the leaf (character node), it is crucial to
 follow a specific convention about how the tree is constructed.  To do
 this we need an ordering on the Huffman nodes.
 
-* Start by defining the __lt__ (self, other) method for HuffmanNode
-  objects that returns true if self should come before other when added
-  to an OrderedList. A HuffmanNode ‘a’ should come before HuffmanNode
-  ‘b’ if the occurrence count of ‘a’ is smaller than that of ‘b’.  In
-  case of equal occurrence counts, break the tie by using the ASCII
-  value of the character to determine the order. If, for example, the
-  characters ’d’ and ’k’ appear exactly the same number of times in your
-  file, then ’d’ comes before ’k’, since the ASCII value of character
-  ’d’ is less than that of ’k’.
-* Write a function that builds a Huffman tree from a given list of the
-  number of occurrences of characters returned by cnt_fref() and returns
-  the root node of that tree. Call this function
-  create_huff_tree(list_of_freqs).
-  * Start by creating an OrderedList (your implementation from Lab 4) of
-    individual Huffman trees each consisting of a single HuffmanNode
-    containing the character and its occurrence counts. Building the
-    actual tree involves removing the two nodes with the lowest
-    frequency count from the sorted list and connecting them to the left
-    and right field of a new created Huffman Node as in the example
-    provided.  The node that comes before the other node should go in
-    the left field.
-  * Note that when connecting two HuffmanNodes to the left and right
-    field of a new parent node, that this new node is also a
-    HuffmanNode, but does not contain an actual character to
-    encode. Instead this new parent node should contain an occurrence
-    count that is the sum of the left and right child occurrence counts
-    as well as the minimum of the left and right character
-    representation in order to resolve ties in the __lt__ method.
-  * Once a new parent node has been created from the two nodes with the
-    lowest occurrence count as described above, that parent node is
-    inserted into the list of sorted nodes.
-  * This process of connecting nodes from the front of the sorted list
-    is continued until there is a single node left in the list, which is
-    the root node of the Huffman tree.  create_huff_tree(list_of_freqs)
-    then returns this node.
-  * If there are no entries in the list of occurrences passed to this
-    function, it should return None.
-  * If there is only one entry in the list of occurrences passed to this
-    function, the tree returned by this function will consist of a
-    single node.
- 
-### Build an Array for the Character Codes
+* Start by defining the tree_lt(a, b) function that accepts two HTrees
+  and returns true if the occurrence count of the first is
+  less than or equal to the occurrence count of the second.
 
-* We have completed our Huffman tree, but we are still lacking a way to
-  get our Huffman codes. Implement a function named
-  create_code(root_node) that traverses the Huffman tree that was passed
-  as an argument and returns an array (using a Phython list) of 256
-  strings. Use the character’s respective integer ASCII representation
-  as the index into the arrary, with the resulting Huffman code for that
-  character stored at that location.  Traverse the tree from the root to
-  each leaf node and adding a ’0’ when we go ’left’ and a ’1’ when we go
-  ’right’ constructing a string of 0’s and 1’s.  You may want to:
-  * use the built-in ’+’ operator to concatenate strings of ’0’s and ’1’s here. 
-  * You may want to initialize a Python list of strings that is
-    initially consists of 256 empty strings in create_code. When
-    create_code completes, this list will store for each character
-    (using the character’s respective integer ASCII representation as
-    the index into the list) the resulting Huffman code for the
-    character. The code will be represented by a sequence of ’0’s and
-    ’1’s in a string.  Note that many entries in this list may still be
-    the empty string.  Return this list.
+* Next, define the HTList data definition, which represents a linked
+  list of HTrees.
 
-2.5 Huffman Encoding
+* Develop the base_tree_list function, that accepts an array of character
+  counts (as returned by cnt_freq) and returns an HTList containing
+  256 HTLeaf's, one for each ASCII code. These should be in order from
+  0 up to 255, where 0 is the first element of the list and 255 is the
+  last.
 
-* Write a function called huffman_encode(in_file, out_file) (use that
-  exact name) that reads an input text file and writes to an output file
-  the following:
-  * A header (see below for format) on the first line in the file
-    (should end with a newline)
-  * Using the Huffman code, the encoded text into an output file. 
-* Write a function called create_header(list_of_freqs) that takes as
-  parameter the list of freqs previously determined from
-  cnt_freq(filename). The create_header function returns a string of the
-  ASCII values and their associated frequencies from the input file
-  text, separated by one space. For example,
-  create_header(list_of_freqs) would return “97 3 98 4 99 2” for the
-  text “aaabbbbcc”
-* The huffman_encode function accepts two file names in that order:
-  input file name and output file name, represented as strings.  If the
-  specified output file already exists, its old contents will be erased.
-  See example files in the test cases provided to see the format.
-* Note: Writing the generated code as a string for each character into a
-  file will actually enlarge the file size instead compress it. The
-  explanation is simple: although we encoded our input text characters
-  in sequences of ’0’s and ’1’s, representing actual single bits, we
-  write them as individual ’0’ and ’1’ characters, i.e. 8 bits.
-* To actually obtain a compressed the file you will also write the ’0’
-  and ’1’ characters as individual bits.  Do this by taking the out_file
-  string and:
-  * Add _compressed to the name of the file before the .txt file.  (Ex:
-    if out_file is named “output.txt”, you will create the string
-    “output_compressed.txt”)
-  * Use the filename created above to create a HuffmanBitWriter object
-    using the huffman_bit_writer module.
-  * Use the methods in the HuffmanBitWriter object to write the header
-    and individual bits of the character codes to the compressed file.
- 
-## Tests
+* Develop the tree_list_insert function, that takes an HTList of HTrees
+  that is sorted in the order specified by tree_lt (that is, the occurrence
+  count of the first tree is less than or equal to the occurrence count
+  of the second tree in the list, and so forth), and another HTree, and
+  inserts it in the list at its correct location so that the resulting
+  HTList is still sorted.
 
-* Write sufficient tests using unittest to ensure full functionality and
-  correctness of your program. Start by using the supplied
-  huffman_tests.py, and the various text files (e.g. file1.txt and
-  file1_soln.txt) to begin testing your programs. You may want to
-  initially comment out some of the tests, or ignore failures when
-  testing functionality that hasn’t been fully implemented.
-* When testing, always consider edge conditions like the following cases:
-  * If the input file consists only of some number of a single
-    character, say "aaaaa", it should write just that character followed
-    by a space followed by the number of occurrences with a newline: “97
-    5\n”
-  * In case of an empty input text file, your program should also
-    produce an empty file.
-  * If an input file does not exist, your program should raise a
-    FileNotFoundError.
+* Develop the initial_tree_sort function, that accepts an unsorted list
+  and constructs a sorted list by inserting the nodes from the unsorted
+  list one at a time into an initially empty sorted list. Write this
+  function by following the data definition on HTLists, and do not
+  use an accumulator; this will guarantee that the last node in the
+  unsorted list is the first one added to the sorted tree. This does
+  not affect the correctness of the algorithm, but honestly just makes
+  it easier to grade (sorry).
 
-## Some Notes
+* Develop the coalesce_once function, that accepts a sorted HTList of
+  length 2 or more, and forms a new list by joining the first and
+  second node together into a new HNode and inserting that new HNode
+  into the list containing the remaining elements. The occurrence
+  count of the new node should be the sum of the two original ones,
+  and the left and right fields of this node should refer to the
+  original trees. At the end, the list should be shorter by one, because
+  we're taking two elements off of the list and inserting one.
 
-When writing your own test files or using copy and paste from an editor,
-take into account that most text editors will add a newline character to
-the end of the file. If you end up having an additional newline
-character ’\n’ in your text file, that wasn’t there before, then this
-’\n’ character will also be added to the Huffman tree and will therefore
-appear in your generated string from the Huffman tree. In addition, an
-actual newline character is treated different, depending on your
-computer platform. Different operating systems have different codes for
-"newline". Windows uses ’\r\n’ = 0x0d 0x0a, while Unix and Mac use ’\n’
-= 0x0a. It is always useful to use a hex editor to verify why certain
-files that appear identical in a regular text editor are actually not
-identical.   
+* Develop the coalesce_all function, that accepts a sorted HTList
+  of length one or more and calls `coalesce_once` repeatedly until
+  the list contains only a single HTree, then returns that one HTree.
 
-## Submission
+This single tree is what we call the Huffman Tree. Its occurrence count
+should be the number of characters in the original file, and each
+subtree should have roughly the same number of characters (or as close
+as we can get, given our other constraints). This will mean that common
+characters are found along short paths, and that uncommon characters
+are found along long paths. This gives rise to our encoding scheme, which
+is to represent each character as a path down from the root of this
+tree to the leaf containing the given character.
 
-You must submit (commit and push) the following files:
+In fact, what we really have now is the *decoding* tree; if we are given
+a sequence such as "left left right left right right left", we can start
+at the root and follow left and right paths to until we get to a leaf node,
+which represents a character in the stream; to continue decoding, we start
+at the top again.
 
-* huffman.py, containing the functions specified and any helper
-  functions necessary
-  * cnt_freq(filename): returns a Python list of 256 integers
-    representing the frequencies of characters in file (indexed by ASCII
-    value of characters)
-  * create_huff_tree(list_of_freqs): returns the root node of a Huffman
-    Tree, a Huffman node object
-  * create_code(root_node): returns a Python list of 256 strings
-    representing the code for each character (indexed by ASCII value of
-    the character).  Note: Use an empty string to represent the code for
-    ASCII characters that do not appear in the file being compressed.
-  * create_header(list_of_freqs): returns a header for the output file
-    with ascii values and their associated counts, space separated.
-  * huffman_encode(in_file, out_file): encodes in_file and writes the it
-    to out_file
+Next, we need to map this decoding tree into an *encoding* tree; to
+do this, we must identify for each character the path that leads to
+that character.
 
-* huffman_tests.py, containing testcases for the functions specified by
-  the assignment
-  * This file should contain tests only for the functions specified
-    above and should only test functionality required by the
-    specification. These tests must run properly on any valid solution
-    and will be tested to see if they can catch bugs in incorrect
-    solutions.
+This will consist of a function that follows the template for an HTree,
+with *two* accumulators. One is an array of 256 strings, which will wind
+up being our map from characters to their encodings. The other is a
+string containing ones and zeros, that represents the path taken to get
+from the root to this particular node; a zero represents a trip down
+the left branch, and a one a trip down the right branch. So, for instance,
+if a left left right path leads to the character Q, then in location
+81 of the array (ord('Q') == 81), we would put the string "001".
 
-* huffman_helper_tests.py, containing all testcases used in developing
-  your solution
-  * This file should contain all tests for your solution, including
-    tests for any helper functions that you may have used. These tests
-    will be used to verify that you have 100% coverage of your
-    solution. Your solution must pass these tests.
+* Develop the build_encoder_array function, that performs this construction.
 
-* ordered_list.py, your correct implementation of the OrderedList class
-  from Lab 4.
+* Develop the function encode_string_one, that accepts a string and an
+  encoder array and constructs the string (containing entirely ones
+  and zeros) formed by appending the encodings of each of the characters
+  in the string.
 
-* huffman_bit_writer.py, unmodified, as provided to you.
+* Develop the function bits_to_chars, that accepts a string of ones
+  and zeros and converts it to a new string that is 1/8 as long by
+  taking each 8-char substring of ones and zeros, converting it to
+  the corresponding integer in the range 0-255, and then using the
+  `chr` function to produce a single character of the output string.
+  The input string's length is unlikely to be divisible by eight; you
+  can pad the string with zeros to get it up to the final length.
+
+* Finally, tie it all together with a huffman_code_file function that
+  accepts a source and target file path, reads the input file, constructs
+  a huffman tree, maps this to an encoding tree, uses the encoding tree to
+  encode the contents of the input file, converts it to the char representantion,
+  then writes this to the new file (replacing any file that was existing at
+  this path).
+
+# OPTIONAL
+
+What? You want to decode the stuff? In order to do that, you'll need to have
+the decode tree, or something equivalent to it. You could start from the
+original string again to construct the tree, but if you have to have the
+original file in order to decompress the compressed file... well, that's
+a bit pointless.
+
+However, it turns out that all you need in order to reconstruct the 
+decode tree is the list of character frequencies.
+
+If you would like to decode your files, then you should develop a
+write_char_freqs function that accepts a frequency array and a file path
+and writes the integers in the frequency array to the given file path,
+separated by spaces. This should be of quite modest size, even for very
+large files. To decode a file, you can then use this small frequency
+file to reconstruct the decode table, and then use the decode table
+to decode the compressed file.
 
