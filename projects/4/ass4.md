@@ -73,6 +73,19 @@ Notes:
 1. There is no distinction made between upper and lower case letters (CaT is the same word as cat)
 1. Blank lines are counted in line numbering.
 
+
+
+
+*** WIP ***
+
+
+
+A concordance contains a list of stop-words, and a mutable hash table mapping words to a list of textual positions.
+
+A location-hash is a hash table mapping strings to textual positions
+
+
+
 The general algorithm for the word-concordance program is:
 
 1. Read the stop-words file into your implementation of a hash table
