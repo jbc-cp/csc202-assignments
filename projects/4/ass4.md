@@ -74,18 +74,6 @@ Notes:
 1. Blank lines are counted in line numbering.
 
 
-
-
-*** WIP ***
-
-
-
-A concordance contains a list of stop-words, and a mutable hash table mapping words to a list of textual positions.
-
-A location-hash is a hash table mapping strings to textual positions
-
-
-
 The general algorithm for the word-concordance program is:
 
 1. Read the stop-words file into your implementation of a hash table
@@ -133,9 +121,13 @@ Also, your hash table size should have the capability to grow if the
 input file is large.  After insertion of an item, if the load factor
 exceeds 0.5, you should grow the hash table size.
 
-Start with a default hash table size of 191, then if increases are necessary, use: 
+Start with a default hash table size of a power of two. When increases are necessary, double
+the size of the table.
 
-“new table size” = 2 * “old table size” + 1 (use this “new table size” even if it is no longer a prime)
+Use the probing sequence
+
+(i * (i + 1))/2
+
 
 ### Removing Punctuation
 
@@ -143,15 +135,35 @@ It is recommended that you process the input file one line at a time.
 
 For each line in the input file, do the following:
 
-* Remove all occurrences of the apostrophe character (‘)
+* Remove all occurrences of the apostrophe character (‘) (so the word "don't" would simply become "dont")
 * Convert all characters in string.punctuation to spaces.
 * Split the string into tokens using the .split() method.
 * Each token that returns True when the is_alpha() method is called should be considered a “word”.  All other tokens should be ignored.
 
-### Provided Data Files  
+### Implementation Report
 
-* the stop words in the file stop_words.txt
-* six sample data files that can be used for preliminary testing of your programs:
-  * file1.txt, file1_sol.txt - contains no punctuation to be removed
-  * file2.txt, file2_sol.txt - contains punctuation to be removed
-  * declaration.txt, declaration_sol.txt – larger file for test
+Your project must include a short implementation writeup or
+"lab report", containing the following information:
+
+* instructions on how to call your program with a text of the user's choice.
+* the data definitions, and first lines & purpose statements of every
+  function & method that you wrote.
+* A description of running the program on a large text file (> 1 Megabyte),
+  including the total length of the output, and a quasi-random chunk of
+  five consecutive lines of the output. Choose one of these lines, and verify
+  by hand that the given word does in fact occur in the specified locations
+  within the file.
+* the name of an animal that does not occur anywhere in your source text.
+
+This writeup should be in the form of a pdf with the name "writeup.pdf",
+submitted as part of your Git repo.
+
+### How To Hand In
+
+Hand in your code by pushing to the git repo corresponding to this project.
+
+You should turn in all source code, testing files, including at least
+one that is more that 1 megabyte in size, and the writeup. If you test
+on a file that is not in English, you will want to provide a
+stop_words.txt file specifically for that language, which may be
+difficult unless you are a native speaker of that language.
