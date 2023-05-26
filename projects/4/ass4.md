@@ -24,9 +24,10 @@ You should also not include strings that represent numbers. e.g. “24” or
 ### Sample Text File
 
 ```
-This is a sample data ((text)) file, to be processed by your word-concordance program!!!
+This is a sample data ((text)) file, to be 
+processed by your word-concordance program!!!
 
-A REAL data files is MUCH bigger. Gr8!
+A REAL data file is MUCH bigger. Gr8!
 ```
 
 ### Sample Stop-Words File
