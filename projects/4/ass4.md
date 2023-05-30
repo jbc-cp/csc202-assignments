@@ -79,7 +79,7 @@ The general algorithm for the word-concordance program is:
 
 1. Read the stop-words file into your implementation of a hash table
    containing the stop words. For the initial table size, start with
-   default of 191 and let the table grow as described below, if
+   default of 128 and let the table grow as described below, if
    necessary. Note: You should use the same hash table implementation
    for the stop-words and the concordance. In the case of the
    stop-words, you just won’t use the line number information (can
@@ -88,8 +88,8 @@ The general algorithm for the word-concordance program is:
 1. The word-concordance will be in a separate hash table from the stop
    words hash table. Process the input file one line at a time to build
    the word-concordance.  This hash table should only contain the
-   non-stop words as the keys (use the stop words hash table to “filter
-   out” the stop words).  Associated with each key is its value where
+   non-stop words as the keys (use the stop words hash table to "filter
+   out" the stop words).  Associated with each key is its value where
    the value consists of a list containing the line numbers where the
    key appears.  DO NOT INCLUDE DUPLICATE LINE NUMBERS.
 1. Generate a text file containing the concordance words printed out in
@@ -122,7 +122,7 @@ Also, your hash table size should have the capability to grow if the
 input file is large.  After insertion of an item, if the load factor
 exceeds 0.5, you should grow the hash table size.
 
-Start with a default hash table size of a power of two. When increases are necessary, double
+Start with a default hash table size of 128. When increases are necessary, double
 the size of the table.
 
 Use the probing sequence
@@ -168,3 +168,5 @@ one that is more that 1 megabyte in size, and the writeup. If you test
 on a file that is not in English, you will want to provide a
 stop_words.txt file specifically for that language, which may be
 difficult unless you are a native speaker of that language.
+
+
