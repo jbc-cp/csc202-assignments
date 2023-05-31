@@ -141,6 +141,71 @@ For each line in the input file, do the following:
 * Split the string into tokens using the .split() method.
 * Each token that returns True when the is_alpha() method is called should be considered a “word”.  All other tokens should be ignored.
 
+### Using Python data structures
+
+Please do not use a Python `dict` for this assignment, that ... is a hash table,
+so that's pretty much the whole assignment done right there.
+
+On the other hand, it's okay for you to use Python lists for this assignment,
+specifically in order to track the list of lines where a word occurs.
+
+### Testable Functions
+
+In order to make your code testable, we're requiring a set of functions. This
+should not dictate your internal implementations; each of these should be
+a very easy "add-on" to any implementation of the project.
+
+
+```
+# Make a fresh hash table with the given size, containing no elements
+def make_hash(size: int) -> HashTable:
+  pass
+
+# Return the size of the given hash table
+def hash_size(ht: HashTable) -> int:
+  pass
+
+# Return the number of elements in the given hash table
+def hash_count(ht: HashTable) -> int:
+  pass
+
+# Does the hash table contain a mapping for the given word?
+def has_key(ht: HashTable, word: str) -> bool:
+  pass
+
+# What line numbers is the given key mapped to in the given hash table?
+# this list should not contain duplicates, but need not be sorted.
+def lookup(ht: HashTable, word: str) -> List[int]:
+  pass
+
+# Add a mapping from the given word to the given line number in
+# the given hash table
+def add(ht: HashTable, word: str, line: int) -> None:
+  pass
+
+# What are the words that have mappings in this hash table?
+# this list should not contain duplicates, but need not be sorted.
+def hash_keys(ht: HashTable, word: str) -> List[str]:
+  pass
+
+# given a list of stop words and a list of strings representing a text,
+# return a hash table
+def make_concordance(stop_words: List[str], text: List[str]) -> HashTable:
+  pass
+```
+
+Note that nearly all of these methods should not require traversing the
+whole hash table. The exceptions are: `hash_keys`, `make_concordance`,
+and (occassionally) `add` (when a resize is required).
+
+All of these should be defined in the file `main.py`, in such a way that
+one can write 
+
+```
+from main import make_hash, hash_size, hash_count, has_key, lookup, add, hash_keys, make_concordance
+```
+
+
 ### Implementation Report
 
 Your project must include a short implementation writeup or
