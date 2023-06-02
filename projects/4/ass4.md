@@ -185,7 +185,7 @@ def add(ht: HashTable, word: str, line: int) -> None:
 
 # What are the words that have mappings in this hash table?
 # this list should not contain duplicates, but need not be sorted.
-def hash_keys(ht: HashTable, word: str) -> List[str]:
+def hash_keys(ht: HashTable) -> List[str]:
   pass
 
 # given a list of stop words and a list of strings representing a text,
