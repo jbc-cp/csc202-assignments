@@ -139,7 +139,7 @@ For each line in the input file, do the following:
 * Remove all occurrences of the apostrophe character (‘) (so the word "don't" would simply become "dont")
 * Convert all characters in string.punctuation to spaces.
 * Split the string into tokens using the .split() method.
-* Each token that returns True when the is_alpha() method is called should be considered a “word”.  All other tokens should be ignored.
+* Each token that returns True when the isalpha() method is called should be considered a “word”.  All other tokens should be ignored.
 
 ### Using Python data structures
 
