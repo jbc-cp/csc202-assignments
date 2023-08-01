@@ -25,9 +25,6 @@ The key problem is therefore to construct such a binary tree based on
 the frequency of occurrence of characters. A detailed example of how to
 construct such a Huffman tree is provided here: [Huffman_Example.pdf](./Huffman_Example.pdf)
 
-(NB: there is one minor change between the procedure stated in the PDF and
-the one suggested here, see the note below.)
-
 Note: 
 * You must provide test cases for all functions.
 * Use the given names for specified functions, exactly as they appear
@@ -69,13 +66,14 @@ building test cases for each function as it is implemented.
 
 A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. 
 
-* An HNode contains an occurrence count for that tree, and a
+* An HNode contains an occurrence count for that tree, a character, and a
   left and a right HTree.  An HLeaf contains only a character and an
   occurrence count.
 
-(Note: In the given PDF, the nodes also contain a character, for use
-in unambiguous ordering. As long as we insert the trees into the sorted
-list in the same order, we don't need to worry about this.)
+(Note: The character in the HNode isn't really necessary... but having
+a character here, and using it in the way specified in the PDF, makes it
+easier to grade the submissions, by ensuring that there's only
+one way to build the tree.)
 
 ### Build a Huffman Tree
 
