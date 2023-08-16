@@ -110,13 +110,15 @@ numbers without any other word processing.
 
 Your implementation should use Open Addressing using quadratic probing for collision resolution.
 
-Note that you will not have to incorporate deleting items from your hash table
+Note that you do not have to support deletion of items from your hash table.
 
 The hash function should take a string containing one or more characters
-and return an integer.  Use Horner’s rule to compute the hash
-efficiently:
+and return an integer.  Here is the hash function you should use:
 
 h(str) = ∑_(i=0)^(n-1)〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n = the minimum of len(str) and 8  
+
+In order to keep the number of multiplications down, you should use Horner's rule to
+compute the output of this hash function for each key.
 
 Also, your hash table size should have the capability to grow if the
 input file is large.  After insertion of an item, if the load factor
