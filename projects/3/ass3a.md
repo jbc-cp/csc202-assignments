@@ -38,10 +38,9 @@ Start with the source files provided to you as part of GitHub Classroom.
 ## Functions
 
 The following bullet points provide a guide to implement some of the
-data structures and individual functions of your program.  Start by
-creating a file huffman.py and add functions and data definitions to
-this file, if not otherwise stated.  You should develop incrementally,
-building test cases for each function as it is implemented.
+data structures and individual functions of your program. You should
+develop incrementally, building test cases for each function as it is
+implemented.
 
 ### Count Occurrences: cnt_freq(str)
 
