@@ -25,9 +25,6 @@ The key problem is therefore to construct such a binary tree based on
 the frequency of occurrence of characters. A detailed example of how to
 construct such a Huffman tree is provided here: [Huffman_Example.pdf](./Huffman_Example.pdf)
 
-(NB: there is one minor change between the procedure stated in the PDF and
-the one suggested here, see the note below.)
-
 Note: 
 * You must provide test cases for all functions.
 * Use the given names for specified functions, exactly as they appear
