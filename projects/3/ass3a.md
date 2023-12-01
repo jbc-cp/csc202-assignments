@@ -65,7 +65,7 @@ implemented.
 
 A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. 
 
-* An HNode contains an occurrence count for that tree, a charater, and a
+* An HNode contains an occurrence count for that tree, a character, and a
   left and a right HTree.  An HLeaf contains only a character and an
   occurrence count.
 
