@@ -86,7 +86,10 @@ this we need an ordering on the Huffman nodes.
   less than or equal to the occurrence count of the second.
 
 * Next, define the HTList data definition, which represents a linked
-  list of HTrees.
+  list of HTrees. This must include an HTNode (N.B.: don't confuse this
+  with HNode, the HTree node class). It must be possible to directly
+  construct a list as e.g. `HTNode(a,HTNode(b,HTNode(c,None)))` where
+  `a`, `b`, and `c` are HTrees.
 
 * Develop the base_tree_list function, that accepts an array of character
   counts (as returned by cnt_freq) and returns an HTList containing
