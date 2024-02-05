@@ -83,7 +83,14 @@ this we need an ordering on the Huffman nodes.
 
 * Start by defining the tree_lt(a, b) function that accepts two HTrees
   and returns true if the occurrence count of the first is
-  less than or equal to the occurrence count of the second.
+  less the occurrence count of the second OR if the two occurrence
+  counts are equal and the character contained at the root of the first
+  tree is less than the character contained at the rood of the second
+  tree. Note that this refinement (checking the characters) does not
+  affect the overall compression associated with huffman coding, but
+  it ensures that the ordering is a total ordering (at least for sets
+  of trees where each tree's root character occurs at most once, which
+  is the case for our tree lists).
 
 * Next, define the HTList data definition, which represents a linked
   list of HTrees. This must include an HTNode (N.B.: don't confuse this
