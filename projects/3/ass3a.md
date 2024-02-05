@@ -113,12 +113,7 @@ this we need an ordering on the Huffman nodes.
 
 * Develop the initial_tree_sort function, that accepts an unsorted list
   and constructs and returns a sorted list by inserting the nodes from the unsorted
-  list one at a time into an initially empty sorted list. Write this
-  function by following the data definition on HTLists, and do not
-  use an accumulator; this will guarantee that the last node in the
-  unsorted list is the first one added to the sorted tree. This does
-  not affect the correctness of the algorithm, but honestly just makes
-  it easier to grade (sorry).
+  list one at a time into an initially empty sorted list.
 
 * Develop the coalesce_once function, that accepts a sorted HTList of
   length 2 or more, and forms a new list by joining the first and
