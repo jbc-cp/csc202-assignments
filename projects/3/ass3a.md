@@ -109,10 +109,10 @@ this we need an ordering on the Huffman nodes.
   count of the first tree is less than or equal to the occurrence count
   of the second tree in the list, and so forth), and another HTree, and
   inserts it in the list at its correct location so that the resulting
-  HTList is still sorted.
+  HTList is still sorted. The function must return the new list.
 
 * Develop the initial_tree_sort function, that accepts an unsorted list
-  and constructs a sorted list by inserting the nodes from the unsorted
+  and constructs and returns a sorted list by inserting the nodes from the unsorted
   list one at a time into an initially empty sorted list. Write this
   function by following the data definition on HTLists, and do not
   use an accumulator; this will guarantee that the last node in the
@@ -128,6 +128,7 @@ this we need an ordering on the Huffman nodes.
   and the left and right fields of this node should refer to the
   original trees. At the end, the list should be shorter by one, because
   we're taking two elements off of the list and inserting one.
+  This function must return the new list.
 
 * Develop the coalesce_all function, that accepts a sorted HTList
   of length one or more and calls `coalesce_once` repeatedly until
