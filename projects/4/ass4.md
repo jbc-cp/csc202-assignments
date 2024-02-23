@@ -1,4 +1,4 @@
-# Project 4: Concordance (An application of hash tables)
+# Concordance (An application of hash tables)
 
 This assignment has several parts: implementing a hash table similar to
 those described in the text (with some additional functionality) and
