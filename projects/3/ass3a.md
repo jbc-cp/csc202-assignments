@@ -45,9 +45,9 @@ implemented.
 ### Count Occurrences: cnt_freq(str)
 
 * Implement a function called cnt_freq(str) that accepts a string
-  and returns a numpy array that indicates the number of occurrences
-  of each character in the string. Use a
-  numpy array data structure of size 256 for counting the
+  and returns an array that indicates the number of occurrences
+  of each character in the string. Use an
+  array data structure of size 256 for counting the
   occurrences of characters.  This will provide efficient access to a
   given position in the list. You can use the Python `ord` function
   to map characters (or, more precisely, strings of length one) to
