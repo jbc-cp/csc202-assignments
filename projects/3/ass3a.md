@@ -63,7 +63,8 @@ implemented.
 
 ### Data Definition for Huffman Tree
 
-A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. 
+A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. (Note: None is *not* a 
+legal HTree.)
 
 * An HNode contains an occurrence count for that tree, a character, and a
   left and a right HTree.  An HLeaf contains only a character and an
@@ -100,7 +101,7 @@ this we need an ordering on the Huffman nodes.
 
 * Develop the base_tree_list function, that accepts an array of character
   counts (as returned by cnt_freq) and returns an HTList containing
-  256 HTLeaf's, one for each ASCII code. These should be in order from
+  256 HLeaf's, one for each ASCII code. These should be in order from
   0 up to 255, where 0 is the first element of the list and 255 is the
   last.
 
