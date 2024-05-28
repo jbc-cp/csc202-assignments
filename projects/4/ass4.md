@@ -171,9 +171,7 @@ The other structures and fields should not be mutable.
 
 ### Testable Functions
 
-In order to make your code testable, we're requiring a set of functions. This
-should not dictate your internal implementations; each of these should be
-a very easy "add-on" to any implementation of the project.
+In order to make your code testable, we're requiring the following set of functions. 
 
 
 ```
