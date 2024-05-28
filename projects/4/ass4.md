@@ -71,7 +71,7 @@ your: 2
 Notes: 
 
 1. Words are defined as sequences of characters delimited by any non-letter (whitespace, punctuation).
-1. There is no distinction made between upper and lower case letters (CaT is the same word as cat)
+1. There is no distinction made between upper and lower case letters (`CaT` is the same word as `cat`)
 1. Blank lines are counted in line numbering.
 
 
@@ -91,7 +91,8 @@ The general algorithm for the word-concordance program is:
    non-stop words as the keys (use the stop words hash table to "filter
    out" the stop words).  Associated with each key is its value where
    the value consists of a list containing the line numbers where the
-   key appears.  DO NOT INCLUDE DUPLICATE LINE NUMBERS.
+   key appears.  Do not include a given line number more than once; there
+   should be no duplicates in the list of line numbers.
 1. Generate a text file containing the concordance words printed out in
    alphabetical order along with their line numbers.  One word per line
    (followed by a colon), and spaces separating items on each line:
@@ -108,7 +109,8 @@ numbers without any other word processing.
 
 ### Collision resolution:
 
-Your implementation should use Open Addressing using quadratic probing for collision resolution.
+Your implementation should use separate chaining. Each hash cell contains a linked
+list of key-value pairs
 
 Note that you do not have to support deletion of items from your hash table.
 
@@ -121,16 +123,11 @@ In order to keep the number of multiplications down, you should use Horner's rul
 compute the output of this hash function for each key.
 
 Also, your hash table size should have the capability to grow if the
-input file is large.  After insertion of an item, if the load factor
-exceeds 0.5, you should grow the hash table size.
+input file is large.  After insertion of an item, if the number of entries
+is greater than or equal to the hash table size, you should grow the hash table size.
 
 Start with a default hash table size of 128. When increases are necessary, double
 the size of the table.
-
-Use the probing sequence
-
-(i * (i + 1))/2
-
 
 ### Removing Punctuation
 
@@ -145,11 +142,32 @@ For each line in the input file, do the following:
 
 ### Using Python data structures
 
-Please do not use a Python `dict` for this assignment, that ... is a hash table,
+Please do not use a Python `dict` for this assignment. It's a hash table,
 so that's pretty much the whole assignment done right there.
 
-On the other hand, it's okay for you to use Python lists for this assignment,
-specifically in order to track the list of lines where a word occurs.
+You will be using a Python `List` in several  places; to represent the Hash Table
+itself, and also as the return type of several functions defined below.
+
+### Data Definitions
+
+For this assignment, you will need a bunch of small data definitions, including
+the following:
+
+```
+IntList # a linked list of integers, used to store lists of line numbers
+
+WordLines # including a word, and a mutable field containing IntList of the lines on which it appears
+
+WordLinesList # a linked list of WordLines structures
+
+HashTable # an array (Python's `List`) of `WordLinesList`s, and a count of
+ the number of `WordLines`es stored in the hash table.
+```
+
+The HashTable should be mutable. The second field of the `WordLines` should be mutable.
+The other structures and fields should not be mutable.
+
+
 
 ### Testable Functions
 
