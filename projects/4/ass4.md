@@ -1,3 +1,9 @@
+# FIXME
+
+* add an api for generating output as described in the following paragraphs
+* describe rehashing clearly, including the "different hash value" problem
+* add `lower()` to the word-cleaning description below
+
 # Concordance (An application of hash tables)
 
 This assignment has several parts: implementing a hash table similar to
