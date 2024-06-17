@@ -240,10 +240,10 @@ Your project must include a short implementation writeup or
   function & method that you wrote.
 * A description of running the program on a large text file (> 1 Megabyte),
   including the total length of the output, and a quasi-random chunk of
-  five consecutive lines of the output. Choose one of these lines, and verify
+  five consecutive lines of the textual output. Choose one of these lines, and verify
   by hand that the given word does in fact occur in the specified locations
   within the file.
-* the name of an animal that does not occur anywhere in your source text.
+* the name of an animal that does not occur anywhere in your input text.
 
 This writeup should be in the form of a pdf with the name "writeup.pdf",
 submitted as part of your Git repo.
