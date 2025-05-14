@@ -121,6 +121,8 @@ this we need an ordering on the Huffman nodes.
   second node together into a new HNode and inserting that new HNode
   into the list containing the remaining elements. The occurrence
   count of the new node should be the sum of the two original ones,
+  the character in the new node should be the alphabetically earlier
+  character from the two original ones,
   and the left and right fields of this node should refer to the
   original trees. At the end, the list should be shorter by one, because
   we're taking two elements off of the list and inserting one.
