@@ -86,7 +86,7 @@ this we need an ordering on the Huffman nodes.
   and returns true if the occurrence count of the first is
   less the occurrence count of the second OR if the two occurrence
   counts are equal and the character contained at the root of the first
-  tree is less than the character contained at the rood of the second
+  tree is less than the character contained at the root of the second
   tree. Note that this refinement (checking the characters) does not
   affect the overall compression associated with huffman coding, but
   it ensures that the ordering is a total ordering (at least for sets
@@ -98,6 +98,12 @@ this we need an ordering on the Huffman nodes.
   with HNode, the HTree node class). It must be possible to directly
   construct a list as e.g. `HTNode(a,HTNode(b,HTNode(c,None)))` where
   `a`, `b`, and `c` are HTrees.
+
+* Develop or copy the `list_len` function, that accepts an HTList and
+  its length.
+
+* Develop or copy the `list_ref` function, that accepts an HTList and an
+  index and returns the HTree at the specified index within the HTList.
 
 * Develop the base_tree_list function, that accepts an array of character
   counts (as returned by cnt_freq) and returns an HTList containing
