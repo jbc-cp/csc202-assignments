@@ -100,7 +100,7 @@ this we need an ordering on the Huffman nodes.
   `a`, `b`, and `c` are HTrees.
 
 * Develop or copy the `list_len` function, that accepts an HTList and
-  its length.
+  returns its length.
 
 * Develop or copy the `list_ref` function, that accepts an HTList and an
   index and returns the HTree at the specified index within the HTList.
