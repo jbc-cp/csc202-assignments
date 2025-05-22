@@ -130,7 +130,10 @@ this we need an ordering on the Huffman nodes.
   the character in the new node should be the alphabetically earlier
   character from the two original ones,
   and the left and right fields of this node should refer to the
-  original trees. At the end, the list should be shorter by one, because
+  original trees. The left tree should be the tree that was
+  the first element of the given list, and the right tree should be
+  the tree that was the second element of the list.
+  At the end, the list should be shorter by one, because
   we're taking two elements off of the list and inserting one.
   This function must return the new list.
 
