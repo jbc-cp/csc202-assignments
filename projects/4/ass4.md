@@ -1,8 +1,3 @@
-# FIXME
-
-* add an api for generating output as described in the following paragraphs
-* describe rehashing clearly, including the "different hash value" problem
-* add `lower()` to the word-cleaning description below
 
 # Concordance (An application of hash tables)
 
@@ -116,24 +111,31 @@ numbers without any other word processing.
 ### Collision resolution:
 
 Your implementation should use separate chaining. Each hash cell contains a linked
-list of key-value pairs
+list of key-value pairs.
 
 Note that you do not have to support deletion of items from your hash table.
 
 The hash function should take a string containing one or more characters
 and return an integer.  Here is the hash function you should use:
 
-h(str) = ∑_(i=0)^(n-1)〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n = the minimum of len(str) and 8  
+h(str) = ∑_(i=0)^(n-1)〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n = len(str)
 
 In order to keep the number of multiplications down, you should use Horner's rule to
-compute the output of this hash function for each key.
+compute the output of this hash function for each key. This means
+alternating additions and multiplications, rather than raising 31 to
+many different powers.
+
+As usual, mapping the large integers that result from this to bin numbers will
+require a modulo operation.
 
 Also, your hash table size should have the capability to grow if the
 input file is large.  After insertion of an item, if the number of entries
 is greater than or equal to the hash table size, you should grow the hash table size.
 
 Start with a default hash table size of 128. When increases are necessary, double
-the size of the table.
+the size of the table and be sure to re-hash all items in the table.
+(Words that collide in a table of size 128 may not collide in a table of
+size 256.)
 
 ### Removing Punctuation
 
@@ -143,6 +145,7 @@ For each line in the input file, do the following:
 
 * Remove all occurrences of the apostrophe character (‘) (so the word "don't" would simply become "dont")
 * Convert all characters in string.punctuation to spaces.
+* make all characters lower-case, using the `lower()` function
 * Split the string into tokens using the .split() method.
 * Each token that returns True when the isalpha() method is called should be considered a “word”.  All other tokens should be ignored.
 
@@ -216,11 +219,16 @@ def hash_keys(ht: HashTable) -> List[str]:
 # return a hash table
 def make_concordance(stop_words: List[str], text: List[str]) -> HashTable:
   pass
+
+# given an input file and an output file, overwrite the output file with
+# a sorted concordance of the input file
+def full_concordance(in_file: str, out_file: str) -> None:
+  pass
 ```
 
 Note that nearly all of these methods should not require traversing the
 whole hash table. The exceptions are: `hash_keys`, `make_concordance`,
-and (occassionally) `add` (when a resize is required).
+`full_concordance`, and (occassionally) `add` (when a resize is required).
 
 All of these should be defined in the file `main.py`, in such a way that
 one can write 
