@@ -1,5 +1,9 @@
 # Assignment 3: Huffman Encoding
 
+## Fixme:
+
+- don't encode as a string; encode as a bytes object instead
+  
 ## Description
 
 For this project, you will implement a program to encode text using
