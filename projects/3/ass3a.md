@@ -145,6 +145,18 @@ this we need an ordering on the Huffman nodes.
   of length one or more and calls `coalesce_once` repeatedly until
   the list contains only a single HTree, then returns that one HTree.
 
+* Use this definition to tie them all together:
+
+```
+# given a string, construct a huffman tree:
+def string_to_HTree(s : str) -> HTree:
+    # chain together the functions required for the task:
+    freqs = cnt_freq(s)
+    treelist = base_tree_list(freqs)
+    sorted_treelist = initial_tree_sort(treelist)
+    return coalesce_all(sorted_treelist)
+```
+
 This single tree is what we call the Huffman Tree. Its occurrence count
 should be the number of characters in the original file, and each
 subtree should have roughly the same number of characters (or as close
