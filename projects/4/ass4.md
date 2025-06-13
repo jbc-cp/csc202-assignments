@@ -220,8 +220,11 @@ def hash_keys(ht: HashTable) -> List[str]:
 def make_concordance(stop_words: List[str], text: List[str]) -> HashTable:
   pass
 
+# a default list of stop words, to be used with full_concordance:
+default_stop_words : List[str] = [] # define your own list here!
+
 # given an input file and an output file, overwrite the output file with
-# a sorted concordance of the input file
+# a sorted concordance of the input file.
 def full_concordance(in_file: str, out_file: str) -> None:
   pass
 ```
