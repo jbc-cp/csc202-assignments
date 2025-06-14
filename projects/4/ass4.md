@@ -174,7 +174,9 @@ HashTable # an array (Python's `List`) of `WordLinesList`s, and a count of
 ```
 
 The HashTable should be mutable. The second field of the `WordLines` should be mutable.
-The other structures and fields should not be mutable.
+The other structures and fields should not be mutable. (Note that most Python type systems
+are not refined enough to allow mutation only of a single field, so you'll almost certainly
+have to make the whole `WordLines` class mutable.)
 
 
 
