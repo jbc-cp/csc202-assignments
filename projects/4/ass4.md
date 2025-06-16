@@ -190,6 +190,10 @@ In order to make your code testable, we're requiring the following set of functi
 
 
 ```
+# Compute the result of the specified hash function on strings
+def hash_fn(s: str) -> int:
+  pass
+
 # Make a fresh hash table with the given size, containing no elements
 def make_hash(size: int) -> HashTable:
   pass
