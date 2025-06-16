@@ -1,3 +1,7 @@
+# FIXME:
+
+* Better support for string cleaning
+* iterators or something similar
 
 # Concordance (An application of hash tables)
 
