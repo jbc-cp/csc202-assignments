@@ -1,4 +1,6 @@
 # csc202-assignments
 A public repo containing the current labs and assignments for 202
 
-The materials in this repository are (c) 2017--2024 by their respective authors, and may not be used without permission.
+... and maybe some lecture notes to be made visible to students!
+
+The materials in this repository are (c) 2017--2025 by their respective authors, and may not be used without permission.
