@@ -1,8 +1,4 @@
 # Assignment 3: Huffman Encoding
-
-## Fixme:
-
-- don't encode as a string; encode as a bytes object instead
   
 ## Description
 
@@ -62,13 +58,13 @@ implemented.
   systems.
   * Suppose the file to be encoded contained:	ddddddddddddddddccccccccbbbbaaff
   * Numbers in positions of freq counts 		[96:104] = [0, 2, 4, 8, 16, 0, 2, 0]
-  * For an empty file, this function should return a list of size 256 filled with all 0s.
+  * For an empty file, this function should return an array of size 256 filled with all 0s.
 
 
 ### Data Definition for Huffman Tree
 
-A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. (Note: None is *not* a 
-legal HTree.)
+A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's.
+(Note: None is *not* a legal HTree. That's what the HLeaf is for!)
 
 * An HNode contains an occurrence count for that tree, a character, and a
   left and a right HTree.  An HLeaf contains only an occurrence count
@@ -98,9 +94,9 @@ this we need an ordering on the Huffman nodes.
   is the case for our tree lists).
 
 * Next, define the HTList data definition, which represents a linked
-  list of HTrees. This must include an HTNode (N.B.: don't confuse this
+  list of HTrees. This must include an HTLNode (N.B.: don't confuse this
   with HNode, the HTree node class). It must be possible to directly
-  construct a list as e.g. `HTNode(a,HTNode(b,HTNode(c,None)))` where
+  construct a list as e.g. `HTLNode(a,HTLNode(b,HTLNode(c,None)))` where
   `a`, `b`, and `c` are HTrees.
 
 * Develop or copy the `list_len` function, that accepts an HTList and
@@ -195,18 +191,21 @@ if a left left right path leads to the character Q, then in location
   and zeros) formed by appending the encodings of each of the characters
   in the string.
 
-* Develop the function bits_to_chars, that accepts a string of ones
-  and zeros and converts it to a new string that is 1/8 as long by
+* Develop the function bits_to_bytes, that accepts a string of ones
+  and zeros and converts it to a new bytearray that is 1/8 as long by
   taking each 8-char substring of ones and zeros, converting it to
-  the corresponding integer in the range 0-255, and then using the
-  `chr` function to produce a single character of the output string.
+  the corresponding integer in the range 0-255, and putting that
+  number in the corresponding element of the bytearray. Note that a
+  bytearray of a specified length `n` can be created by calling
+  `bytearray(n)`.
+  
   The input string's length is unlikely to be divisible by eight; you
   can pad the string with zeros to get it up to the final length.
 
 * Finally, tie it all together with a huffman_code_file function that
   accepts a source and target file path, reads the input file, constructs
   a huffman tree, maps this to an encoding tree, uses the encoding tree to
-  encode the contents of the input file, converts it to the char representantion,
+  encode the contents of the input file, converts it to the byte representantion,
   then writes this to the new file (replacing any file that was existing at
   this path).
 
@@ -219,7 +218,7 @@ original file in order to decompress the compressed file... well, that's
 a bit pointless.
 
 However, it turns out that all you need in order to reconstruct the 
-decode tree is the list of character frequencies.
+decode tree is the sequence of character frequencies.
 
 If you would like to decode your files, then you should develop a
 write_char_freqs function that accepts a frequency array and a file path
