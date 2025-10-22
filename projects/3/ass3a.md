@@ -18,7 +18,7 @@ The basic idea is to use a binary tree, where each leaf node represents
 a character and frequency count. The Huffman code of a character is then
 determined by the unique path from the root of the binary tree to that
 leaf node, where each ’left’ accounts for a ’0’ and a ’right’ accounts
-for a ’1’ as a bit.  Since the number of bits needed to encode a
+for a ’1’.  Since the number of bits needed to encode a
 character is the path length from the root to the character, a character
 occurring frequently should have a shorter path from the root to their
 node than an “infrequent” character, i.e. nodes representing frequent
@@ -53,11 +53,11 @@ implemented.
   of each character in the string. Use an
   array data structure of size 256 for counting the
   occurrences of characters.  This will provide efficient access to a
-  given position in the list. You can use the Python `ord` function
+  given position in the array. You can use the Python `ord` function
   to map characters (or, more precisely, strings of length one) to
   numeric values. You should discard all values larger than 255.
   (These numbers will then be ASCII codes.)
-  This function should return the 256 item list with the counts
+  This function should return the 256 item array with the counts
   of occurrences.  There can be issues with extra characters in some
   systems.
   * Suppose the file to be encoded contained:	ddddddddddddddddccccccccbbbbaaff
@@ -71,8 +71,8 @@ A Huffman Tree or HTree is a binary tree of HNode's and HLeaf's. (Note: None is 
 legal HTree.)
 
 * An HNode contains an occurrence count for that tree, a character, and a
-  left and a right HTree.  An HLeaf contains only a character and an
-  occurrence count.
+  left and a right HTree.  An HLeaf contains only an occurrence count
+  and a character.
 
 (Note: The character in the HNode isn't really necessary... but having
 a character here, and using it in the way specified in the PDF, makes it
@@ -185,7 +185,10 @@ the left branch, and a one a trip down the right branch. So, for instance,
 if a left left right path leads to the character Q, then in location
 81 of the array (ord('Q') == 81), we would put the string "001".
 
-* Develop the build_encoder_array function, that performs this construction.
+* Develop the build_encoder_array function, that performs this
+  construction, mapping a decoding tree to an array. If you want
+  accumulators, you should make a helper function, so that
+  build_encoder_array has the expected number of input arguments (1).
 
 * Develop the function encode_string_one, that accepts a string and an
   encoder array and constructs the string (containing entirely ones
