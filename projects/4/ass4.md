@@ -106,11 +106,6 @@ The general algorithm for the word-concordance program is:
    
    Note there is no space after the last line number - make sure to match the sample output files.
 
-It is strongly suggested that the logic for reading words and assigning
-line numbers to them be developed and tested separately from other
-aspects of the program.  This could be accomplished by reading a sample
-file and printing out the words recognized with their corresponding line
-numbers without any other word processing.
 
 ### Collision resolution:
 
@@ -225,17 +220,14 @@ def add(ht: HashTable, word: str, line: int) -> None:
 def hash_keys(ht: HashTable) -> List[str]:
   pass
 
-# given a list of stop words and a list of strings representing a text,
-# return a hash table
-def make_concordance(stop_words: List[str], text: List[str]) -> HashTable:
+# given a list of stop words and a list of strings representing lines of
+# a text, return a hash table
+def make_concordance(stop_words: HashTable, text: List[str]) -> HashTable:
   pass
 
-# a default list of stop words, to be used with full_concordance:
-default_stop_words : List[str] = [] # define your own list here!
-
-# given an input file and an output file, overwrite the output file with
+# given an input file , a stop-words file, and an output file, overwrite the output file with
 # a sorted concordance of the input file.
-def full_concordance(in_file: str, out_file: str) -> None:
+def full_concordance(in_file: str, stop_words_file: str, out_file: str) -> None:
   pass
 ```
 
@@ -247,7 +239,7 @@ All of these should be defined in the file `main.py`, in such a way that
 one can write 
 
 ```
-from main import make_hash, hash_size, hash_count, has_key, lookup, add, hash_keys, make_concordance
+from main import make_hash, hash_size, hash_count, has_key, lookup, add, hash_keys, make_concordance, full_concordance
 ```
 
 
@@ -256,7 +248,6 @@ from main import make_hash, hash_size, hash_count, has_key, lookup, add, hash_ke
 Your project must include a short implementation writeup or
 "lab report", containing the following information:
 
-* instructions on how to call your program with a text of the user's choice.
 * the data definitions, and first lines & purpose statements of every
   function & method that you wrote.
 * A description of running the program on a large text file (> 1 Megabyte),
