@@ -1,8 +1,3 @@
-# FIXME:
-
-* Better support for string cleaning
-* iterators or something similar
-
 # Concordance (An application of hash tables)
 
 This assignment has several parts: implementing a hash table similar to
@@ -16,15 +11,30 @@ keep track of all the line numbers where these main words occur.
 
 The goal of this assignment is to process a textual data file to
 generate a word concordance with line numbers for each main word.  A
-Hash Table ADT is perfect to store the word concordance with the word
-being the key and a list of its line numbers being the associated value
-for the key. Since the concordance should only keep track of the “main”
-words, there will be another file containing words to ignore, namely a
-stop-words file (stop_words.txt).  The stop-words file will contain a
-list of stop words (e.g., “a”, “the”, etc.) -- these words will not be
+Hash Table is perfect to store the word concordance; the word
+can be the key and a list of its line numbers can be the associated value
+for the key. Since there are certain words like "a", "the", and "of" that
+are very frequent and which users are unlikely to want to track,
+there will be another file containing words to ignore, namely a
+"stop-words" file (e.g. stop_words.txt).  The stop-words file will contain a
+list of stop words -- these words should not be
 included in the concordance even if they do appear in the data file.
-You should also not include strings that represent numbers. e.g. “24” or
-“2.4” should not appear.
+
+(As an aside; the term "stop words" is somewhat misleading, it would appear
+to indicate words that cause processing to stop. However, this is a 
+term of art in Natural Language Processing; that's the term they use,
+so we're kind of stuck with it. You can check out the wikipedia page
+if you want to know more about the term's origin.)
+
+### Removing Punctuation
+
+For each line in the input file, do the following:
+
+* Remove all occurrences of the apostrophe character (‘) (so the word "don't" would simply become "dont"). The `replace()` method of strings can be used to get this done.
+* Convert all characters in string.punctuation to spaces. Again, the `replace()` method can help with this.
+* make all characters lower-case, using the `lower()` function
+* Split the string into tokens using the .split() method of a string.
+* Each token that returns True when the string's isalpha() method is called should be considered a “word”.  All other tokens should be ignored.
 
 ### Sample Text File
 
@@ -89,7 +99,8 @@ The general algorithm for the word-concordance program is:
    for the stop-words and the concordance. In the case of the
    stop-words, you just won’t use the line number information (can
    either store the actual line number from the file, or just use a
-   default value).
+   default value). In other words, the stop-words hash will essentially
+   just be a set.
 1. The word-concordance will be in a separate hash table from the stop
    words hash table. Process the input file one line at a time to build
    the word-concordance.  This hash table should only contain the
@@ -109,8 +120,8 @@ The general algorithm for the word-concordance program is:
 
 ### Collision resolution:
 
-Your implementation should use separate chaining. Each hash cell contains a linked
-list of key-value pairs.
+Your implementation should use separate chaining, also known as "closed addressing".
+Each hash cell contains a linked list of key-value pairs.
 
 Note that you do not have to support deletion of items from your hash table.
 
@@ -136,17 +147,6 @@ the size of the table and be sure to re-hash all items in the table.
 (Words that collide in a table of size 128 may not collide in a table of
 size 256.)
 
-### Removing Punctuation
-
-It is recommended that you process the input file one line at a time.
-
-For each line in the input file, do the following:
-
-* Remove all occurrences of the apostrophe character (‘) (so the word "don't" would simply become "dont")
-* Convert all characters in string.punctuation to spaces.
-* make all characters lower-case, using the `lower()` function
-* Split the string into tokens using the .split() method.
-* Each token that returns True when the isalpha() method is called should be considered a “word”.  All other tokens should be ignored.
 
 ### Using Python data structures
 
@@ -252,17 +252,28 @@ Your project must include a short implementation writeup or
   function & method that you wrote.
 * A description of running the program on a large text file (> 1 Megabyte),
   including the total length of the output, and a quasi-random chunk of
-  five consecutive lines of the textual output. Choose one of these lines, and verify
+  five consecutive lines of the textual concordance output. Choose one of these lines, and verify
   by hand that the given word does in fact occur in the specified locations
   within the file.
 * the name of an animal that does not occur anywhere in your input text.
 
 This writeup should be in the form of a pdf with the name "writeup.pdf",
-submitted as part of your Git repo.
+submitted with the rest of your files.
 
 ### How To Hand In
 
-Hand in your code by pushing to the git repo corresponding to this project.
+Hand in your code using Gradescope, as usual. Be sure to designate all of your
+team members in Gradescope.
+
+Your `main.py` file should not generate any output or require any input files
+to be present when loaded as a library. Put differently, it should be possible
+to run `test_basic.py` in a directory that contains only that file and `main.py`,
+with all tests passing, and no output generated besides that generated by the
+unit test.
+
+Note that code in your main.py file that is guarded by a `if (__name__ == "__main__")` block
+will not get run in this scenario, it's fine for that code to generate additional output
+or (more likely) require that certain source files be present.
 
 You should turn in all source code, testing files, including at least
 one that is more that 1 megabyte in size, and the writeup. If you test
