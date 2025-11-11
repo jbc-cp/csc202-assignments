@@ -31,10 +31,10 @@ if you want to know more about the term's origin.)
 For each line in the input file, do the following:
 
 * Remove all occurrences of the apostrophe character (‘) (so the word "don't" would simply become "dont"). The `replace()` method of strings can be used to get this done.
-* Convert all characters in string.punctuation to spaces. Again, the `replace()` method can help with this.
+* Convert all characters in `string.punctuation` to spaces. Again, the `replace()` method can help with this.
 * make all characters lower-case, using the `lower()` function
-* Split the string into tokens using the .split() method of a string.
-* Each token that returns True when the string's isalpha() method is called should be considered a “word”.  All other tokens should be ignored.
+* Split the string into tokens using the `.split()` method of a string.
+* Each token that returns True when the string's `isalpha()` method is called should be considered a “word”.  All other tokens should be ignored.
 
 ### Sample Text File
 
@@ -106,7 +106,7 @@ The general algorithm for the word-concordance program is:
    the word-concordance.  This hash table should only contain the
    non-stop words as the keys (use the stop words hash table to "filter
    out" the stop words).  Associated with each key is its value where
-   the value consists of a list containing the line numbers where the
+   the value consists of a linked list containing the line numbers where the
    key appears.  Do not include a given line number more than once; there
    should be no duplicates in the list of line numbers.
 1. Generate a text file containing the concordance words printed out in
@@ -128,12 +128,13 @@ Note that you do not have to support deletion of items from your hash table.
 The hash function should take a string containing one or more characters
 and return an integer.  Here is the hash function you should use:
 
-h(str) = ∑_(i=0)^(n-1)〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n = len(str)
+h(str) = ∑_(i=0)^(n-1)〖ord(str[i])* 〖31〗^(n-1-i) 〗  where n =
+len(str)
 
-In order to keep the number of multiplications down, you should use Horner's rule to
-compute the output of this hash function for each key. This means
-alternating additions and multiplications, rather than raising 31 to
-many different powers.
+To make this hash function more efficient, don't compute a whole new power of 31
+every time. Instead, design this function as a loop where your pow-of-31 
+variable gets multiplied by 31 with each increase of 'n'. This is a technically
+a specific application of [Horner's method](https://en.wikipedia.org/wiki/Horner%27s_method).
 
 As usual, mapping the large integers that result from this to bin numbers will
 require a modulo operation.
@@ -155,6 +156,9 @@ so that's pretty much the whole assignment done right there.
 
 You will be using a Python `List` in several  places; to represent the Hash Table
 itself, and also as the return type of several functions defined below.
+(Note, though, that you'll be using linked lists for the contents of the
+hash table cells, and the list of line numbers stored in each element of
+this outer list, as described in the data definitions below.)
 
 ### Data Definitions
 
@@ -162,21 +166,31 @@ For this assignment, you will need a bunch of small data definitions, including
 the following:
 
 ```
-IntList # a linked list of integers, used to store lists of line numbers
 
-WordLines # including a word, and a mutable field containing IntList of the lines on which it appears
 
-WordLinesList # a linked list of WordLines structures
+IntList # a linked list of integers, used to store the unique line
+        # numbers associated with a particular word in the concordance.
 
-HashTable # an array (Python's `List`) of `WordLinesList`s, and a count of
- the number of `WordLines`es stored in the hash table.
+WordLines # a non-frozen [mutable] dataclass representing a key-value pair, containing
+ # (1) the key--a word--and
+ # (2) the [meant-to-be-mutated] value associated with that word: an IntList representing 
+ #     the line numbers where that word occurs.
+
+WordLinesList # a linked list of WordLines
+
+HashTable # a non-frozen [mutable] dataclass containing 
+          # (1) an array (Python's `List`) of `WordLinesList`s, and
+          # (2) a count of the number of `WordLines`es stored in the hash table.
+
 ```
 
-The HashTable should be mutable. The second field of the `WordLines` should be mutable.
-The other structures and fields should not be mutable. (Note that most Python type systems
-are not refined enough to allow mutation only of a single field, so you'll almost certainly
-have to make the whole `WordLines` class mutable.)
 
+Note that we have to make 'WordLines' and 'HashTable' mutable (no
+'frozen=True'). However, the only things that your code should actually
+mutate are the two fields of 'HashTable' and the first field of
+'WordLines'. (Unfortunately, most Python types systems don't let you
+declare a specific member of a class as frozen/immutable, so you'll
+probably have to make the whole dataclass mutable.)
 
 
 ### Testable Functions
