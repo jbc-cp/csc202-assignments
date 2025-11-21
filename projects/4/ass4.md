@@ -234,7 +234,7 @@ def add(ht: HashTable, word: str, line: int) -> None:
 def hash_keys(ht: HashTable) -> List[str]:
   pass
 
-# given a list of stop words and a list of strings representing lines of
+# given a hash table of stop words and a list of strings representing lines of
 # a text, return a hash table
 def make_concordance(stop_words: HashTable, text: List[str]) -> HashTable:
   pass
